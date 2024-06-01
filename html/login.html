@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,13 +16,33 @@
             <img src="../img/logo.png" alt="logo">
         </div>
         <div class="login-container">
-            <form class="login-form" action="../inicio.html">
+            <form class="login-form" action="#" onsubmit="return validarFormulario();">>
                 <h2>Iniciar Sesión</h2>
-                <input type="text" placeholder="Nombre de usuario" required>
-                <input type="password" placeholder="Contraseña" required>
-                <button type="submit">Ingresar</button>
+                <input type="text" id="username" placeholder="Nombre de usuario" required>
+                <input type="password" id="password" placeholder="Contraseña" required>
+                <div id="error-msg" style="color: red; display: none;">Usuario o contraseña incorrectos. Inténtelo de nuevo.</div>
+                <button type="button" onclick="validarFormulario()"> Ingresar </button>
+
             </form>
         </div>
     </div>
+    <script>
+        function validarFormulario(){
+    const username= document.getElementById('username').value
+    const password= document.getElementById('password').value
+    const errorMsg = document.getElementById('error-msg');
+
+    const correctusername = 'user';
+    const correctpassword = '123';
+
+    if(username === correctusername && password === correctpassword) {
+            alert('Inicio de sesión exitoso');
+            window.location.href = 'inicio.html';
+    } else {
+        errorMsg.style.display = 'block'; 
+                return false; 
+     }
+}    
+    </script>
 </body>
 </html>
